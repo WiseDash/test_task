@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-
 gem 'rails', '3.2.14'
+gem 'bootstrap-sass', '2.1'
+gem 'bcrypt-ruby', '3.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,6 +11,10 @@ gem 'rails', '3.2.14'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'mysql2'
+  gem 'guard-rspec', '1.2.1'
+  gem 'guard-spork', '1.2.0'
+  gem 'childprocess', '0.3.6'
+  gem 'spork', '0.9.2'
 end
 
 # Gems used only for assets and not required
@@ -43,8 +48,14 @@ gem 'jquery-rails'
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'rb-inotify', '0.8.8'
+  gem 'libnotify', '0.5.9'
 end
 
 group :production do
   gem 'pg', '0.12.2'
+end
+
+group :development do
+  gem 'annotate', '2.5.0'
 end
