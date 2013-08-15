@@ -1,0 +1,24 @@
+<% provide(:title, 'Users') %>
+<h1>Зарегистрированные пользователи</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>firstname</th>
+        <th>secondname</th>
+        <th>patronymic</th>
+        <th>dateofbirth</th>
+        <th>login</th>
+        <th>email</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+          <td><%= user.firstname %></td>
+          <td><%= user.secondname %></td>
+          <td><%= user.patronymic %></td>
+          <td><%= user.dateofbirth %></td>
+          <td><%= user.login %></td>
+          <td><%= user.email %></td>
+      </tr>
+    <% end %>
+</table>

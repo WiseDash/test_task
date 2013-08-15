@@ -15,7 +15,7 @@
 
 require 'spec_helper'
 
-describe User do
+describe "User pages" do
   before { @user = User.new(firstname: "Example Firstname", secondname: "Example Secondname", patronymic: "Example Patronymic", dateofbirth: "00.00.00", login: "ExAmPlE", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
 
   subject { @user }
@@ -65,5 +65,38 @@ describe User do
   describe "when password confirmation is nil" do
     before { @user.password_confirmation = nil }
     it { should_not be_valid }
+  end
+
+
+  describe "signup" do
+
+    before { visit signup_path }
+
+    let(:submit) { "Create my account" }
+
+    describe "with invalid information" do
+      it "should not create a user" do
+        expect { click_button submit }.not_to change(User, :count)
+      end
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "Firstname",             with: "Ivan"
+        fill_in "Secondname",            with: "Ivanov"
+        fill_in "Patronymic",            with: "Ivanovich"
+        select "2000",                   from: "user[dateofbirth(1i)]"
+        select "November",               from: "user[dateofbirth(2i)]"
+        select "11",                     from: "user[dateofbirth(3i)]"
+        fill_in "Login",                 with: "IvanIvanov"
+        fill_in "Email",                 with: "Ivan@gmail.com"
+        fill_in "Password",              with: "foobar"
+        fill_in "Password confirmation", with: "foobar"
+      end
+
+      it "should create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
+      end
+    end
   end
 end

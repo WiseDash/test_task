@@ -22,4 +22,5 @@ class User < ActiveRecord::Base
   validates :login, presence:true, length: { minimum: 5, maximum: 32 }, uniqueness: { case_sensitive: false }
   validates :password, presence: true
   validates :password_confirmation, presence: true
+  after_validation { self.errors.messages.delete(:password_digest) }
 end
