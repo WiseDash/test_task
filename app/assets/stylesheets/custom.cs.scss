@@ -7,12 +7,12 @@ html {
 }
 body {
   padding-top: 40px;
-  text-align: center;
+  //text-align: center;
 }
 h1 {
   text-align: center;
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 /* forms */
@@ -24,10 +24,21 @@ h1 {
     margin: 0 0 18px 0;
   }
 }
-
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+form {
+  display:inline-table;
+  margin-left: 37%;
+}
+select {
+  width:auto;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+}
+input, textarea {
+  width: 90%;
 }
 
 /* footer */
@@ -53,10 +64,4 @@ footer ul li {
   margin-left: 10px;
 }
 
-/* forms */
 
-input, textarea {
-  border: 1px solid #bbb;
-  width: 20%;
-  margin-bottom: 15px;
-}

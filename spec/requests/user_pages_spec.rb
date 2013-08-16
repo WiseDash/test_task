@@ -72,7 +72,7 @@ describe "User pages" do
 
     before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "register" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -82,16 +82,16 @@ describe "User pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Firstname",             with: "Ivan"
-        fill_in "Secondname",            with: "Ivanov"
-        fill_in "Patronymic",            with: "Ivanovich"
-        select "2000",                   from: "user[dateofbirth(1i)]"
-        select "November",               from: "user[dateofbirth(2i)]"
-        select "11",                     from: "user[dateofbirth(3i)]"
-        fill_in "Login",                 with: "IvanIvanov"
-        fill_in "Email",                 with: "Ivan@gmail.com"
-        fill_in "Password",              with: "foobar"
-        fill_in "Password confirmation", with: "foobar"
+        fill_in "user_firstname",              with: "Ivan"
+        fill_in "user_secondname",             with: "Ivanov"
+        fill_in "user[patronymic]",            with: "Ivanovich"
+        select "2000",                         from: "user[dateofbirth(1i)]"
+        select "November",                     from: "user[dateofbirth(2i)]"
+        select "11",                           from: "user[dateofbirth(3i)]"
+        fill_in "user[login]",                 with: "IvanIvanov"
+        fill_in "user[email]",                 with: "Ivan@gmail.com"
+        fill_in "user[password]",              with: "foobar"
+        fill_in "user[password_confirmation]", with: "foobar"
       end
 
       it "should create a user" do

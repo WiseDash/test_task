@@ -1,36 +1,57 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h1>Регистрация</h1>
 
-<div class="row">
-    <div>
-        <%= form_for(User.new) do |f| %>
+<div class="container">
+        <%= form_for(@user) do |f| %>
             <%= render 'shared/error_messages' %>
 
-            <%= f.label :firstname %>
-            <%= f.text_field :firstname %>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.text_field :secondname, :class => "input-block-level", :placeholder => "Фамилия" %>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.text_field :firstname, :class => "input-block-level", :placeholder => "Имя" %>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.text_field :patronymic, :class => "input-block-level", :placeholder => "Отчество" %>
+                </div>
+            </div>
 
-            <%= f.label :secondname %>
-            <%= f.text_field :secondname %>
+            <%= f.label :dateofbirth, :"Дата рождения", :class => "control-label" %>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.date_select :dateofbirth, start_year: 1933, end_year: 2006, :order => [:day, :month, :year], :prompt => { :day => 'День', :month => 'Месяц', :year => 'Год' } %>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.text_field :login, :class => "input-block-level", :placeholder => "Логин" %>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.text_field :email, :class => "input-block-level", :placeholder => "Email" %>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.password_field :password, :class => "input-block-level", :placeholder => "Пароль" %>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.password_field :password_confirmation, :class => "input-block-level", :placeholder => "Подтверждение пароля" %>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <%= f.submit "Зарегистрироваться", :id => "register", :class => "btn btn-info" %>
+                </div>
+            </div>
 
-            <%= f.label :patronymic %>
-            <%= f.text_field :patronymic %>
-
-            <%= f.label :dateofbirth %>
-            <%= f.date_select :dateofbirth, start_year: 1933, end_year: 2006 %>
-
-            <%= f.label :login %>
-            <%= f.text_field :login %>
-
-            <%= f.label :email %>
-            <%= f.text_field :email %>
-
-            <%= f.label :password %>
-            <%= f.password_field :password %>
-
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation %>
-
-            <%= f.submit "Create my account" %>
         <% end %>
-    </div>
 </div>

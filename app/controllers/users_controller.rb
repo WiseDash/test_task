@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to action: :index
+      redirect_to users_path
     else
       render 'new'
     end
@@ -15,5 +15,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    redirect_to users_path
   end
 end
