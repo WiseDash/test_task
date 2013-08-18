@@ -2,7 +2,7 @@
 <h1>Регистрация</h1>
 
 <div class="container">
-        <%= form_for(@user) do |f| %>
+        <%= form_for(@user, :class => "form-horizontal") do |f| %>
             <%= render 'shared/error_messages' %>
 
             <div class="control-group">
